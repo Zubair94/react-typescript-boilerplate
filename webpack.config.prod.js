@@ -35,11 +35,11 @@ module.exports = {
             { test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader'] },
             { test: /\.tsx?$/, loader: 'babel-loader' },
             { test: /\.tsx?$/, loader: 'ts-loader' },
-            {
-                test: /\.(png|j?g|svg|gif|ico|woff|woff2|eot|ttf|otf|txt|xml)?$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'file-loader'
+            { 
+                test: /\.(png|j?g|svg|gif|ico|woff|woff2|eot|ttf|otf|txt|xml)?$/, 
+                loader: 'file-loader',
+                options: {
+                    name: '[name]-[contentHash].[ext]'
                 }
             }
         ]
