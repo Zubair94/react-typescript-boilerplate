@@ -4,15 +4,23 @@
         "baseUrl": ".",
         "declaration": false,
         "noImplicitAny": true,
+        "removeComments": true,
         "sourceMap": true,
-        "module": "commonjs",
+        "module": "esnext",
         "target": "es5",
+        "moduleResolution": "node",
+        "noUnusedLocals": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "importHelpers": true,
+        "strictNullChecks": true,
         "jsx": "react",
         "typeRoots": [
-            "node_modules/@types"
+            "node_modules/@types", "src/typings"
         ],
         "lib": [
-            "dom", "es5"
+            "esnext",
+            "dom",
         ],
     },
     "include": [
