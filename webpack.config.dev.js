@@ -4,7 +4,6 @@ const path = require('path');
 
 module.exports = {
     context: __dirname,
-    name: 'todo-app',
     entry: './src/index.tsx',
     mode: 'development',
     devtool: 'source-map',
@@ -32,7 +31,21 @@ module.exports = {
     },
     module: {
         rules: [
-            { test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader'] },
+            { test: /\.scss$/, 
+                use: [
+                    'style-loader', 
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                localIdentName: '[name]__[local]___[hash:base64:5]'
+                            },
+                            sourceMap: true
+                        }
+                    },
+                    'sass-loader'
+                ] 
+            },
             { test: /\.tsx?$/, loader: 'babel-loader' },
             { test: /\.tsx?$/, loader: 'ts-loader' },
             { 

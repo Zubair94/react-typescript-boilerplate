@@ -1,6 +1,6 @@
 import * as React from 'react';
 import logo from '../assets/logo.svg';
-import './app.scss';
+import styles from './app.scss';
 
 export interface AppProps {
     compiler: string;
@@ -10,7 +10,7 @@ export interface AppProps {
 export class App extends React.Component<AppProps> {
     render(): JSX.Element {
         return (
-            <div className="header">
+            <div className={styles.header}>
                 <img src={logo} alt="logo" />
                 <h1>
                     Hello from {this.props.compiler} and {this.props.framework}!

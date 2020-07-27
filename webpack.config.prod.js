@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
 module.exports = {
@@ -23,6 +24,7 @@ module.exports = {
                 }
             ]
         }),
+        new MiniCssExtractPlugin(),
         new HtmlWebpackPlugin({
             template: 'index.html'
         })
@@ -32,7 +34,21 @@ module.exports = {
     },
     module: {
         rules: [
-            { test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader'] },
+            { test: /\.scss$/, 
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                localIdentName: '[name]__[local]___[hash:base64:5]'
+                            },
+                            sourceMap: false,
+                        }
+                    },
+                    'sass-loader'
+                ] 
+            },
             { test: /\.tsx?$/, loader: 'babel-loader' },
             { test: /\.tsx?$/, loader: 'ts-loader' },
             { 
