@@ -10,7 +10,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].bundle.js',
-        chunkFilename: '[name]-[hash].bundle.js',
+        chunkFilename: '[name].bundle.js',
         publicPath: '/'
     },
     plugins: [
@@ -37,6 +37,7 @@ module.exports = {
                     {
                         loader: 'css-loader',
                         options: {
+                            importLoaders: 1,
                             modules: {
                                 localIdentName: '[name]__[local]___[hash:base64:5]'
                             },
