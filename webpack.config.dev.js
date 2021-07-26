@@ -50,7 +50,7 @@ module.exports = {
             { test: /\.tsx?$/, loader: 'babel-loader' },
             { test: /\.tsx?$/, loader: 'ts-loader' },
             { 
-                test: /\.(png|j?g|svg|gif|ico|woff|woff2|eot|ttf|otf|txt|xml)?$/, 
+                test: /\.(png|jpg|jpeg|svg|gif|ico|woff|woff2|eot|ttf|otf|txt|xml)?$/, 
                 loader: 'file-loader',
                 options: {
                     name: '[path][name].[ext]'
